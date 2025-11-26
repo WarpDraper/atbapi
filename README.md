@@ -10,8 +10,6 @@ py -m venv .venv
 python.exe -m pip install --upgrade pip
 py -m pip install django
 
-pip freeze > requirements.txt
-
 python -m django --version
 
 django-admin startproject atbapi
@@ -40,34 +38,14 @@ py manage.py migrate
 py manage.py runserver 4099
 ```
 
-## Working TOPIC - reddit.com
-```
+
+## Working topic - reddit.com
+
 py manage.py startapp topics
 
 py manage.py makemigrations topics
-
-py manage.py migrate
 
 python manage.py shell
 
 from topics.seed_topics import run
 run()
-
-exit()
-
-
-py manage.py runserver 4099
-```
-## Filtes data
-
-```
-pip install django-filter
-
-```
-
-## Working Posts
-```
-py manage.py startapp posts
-
-py manage.py makemigrations posts
-```

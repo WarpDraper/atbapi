@@ -34,7 +34,7 @@ const InputField: React.FC<InputFieldProps> = ({
     useEffect(()=>{
         if(value)
             validateField(value)
-    }, [rules]);
+    }, [value]);
 
     const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (onChange)
@@ -112,7 +112,7 @@ const InputField: React.FC<InputFieldProps> = ({
             </div>
 
             {errorMessage && (
-                <div className="p-4 mb-4 text-sm text-red-800 rounded-lg dark:text-red-400"
+                <div className="text-sm text-red-800 rounded-lg dark:text-red-400"
                      role="alert">
                     <span className="font-medium">{errorMessage}</span>
                 </div>

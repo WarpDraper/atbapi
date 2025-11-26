@@ -1,6 +1,6 @@
 import React from "react";
 import {Typography, Card, Row} from "antd";
-import ResetPasswordForm from "../../../components/forms/ResetPasswordForm.tsx";
+import ResetPasswordForm from "../../../components/forms/user/ResetPasswordForm.tsx";
 
 const { Title, Text } = Typography;
 

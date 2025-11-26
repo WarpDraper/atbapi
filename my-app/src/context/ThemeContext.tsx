@@ -13,8 +13,8 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
-                                                                           children,
-                                                                       }) => {
+    children,
+}) => {
     const [theme, setTheme] = useState<Theme>("light");
     const [isInitialized, setIsInitialized] = useState(false);
 

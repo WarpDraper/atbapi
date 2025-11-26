@@ -1,10 +1,8 @@
 import random
-from rest_framework import viewsets, status, parsers, generics
+from rest_framework import viewsets, status, parsers
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from django.utils.http import urlsafe_base64_decode
-from rest_framework.views import APIView
 
 from .utils import verify_recaptcha
 from .models import CustomUser
@@ -12,8 +10,6 @@ from .serializers import UserSerializer, RegisterSerializer, PasswordResetReques
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .models import CustomUser
-from .serializers import UserSerializer
 
 FIRST_NAMES = ["Alice", "Bob", "Charlie", "Diana", "Eve", "Frank"]
 LAST_NAMES = ["Smith", "Johnson", "Brown", "Taylor", "Anderson", "Lee"]
@@ -132,27 +128,3 @@ class LoginView(TokenObtainPairView):
             return Response({"detail": "Invalid credentials"}, status=401)
 
         return Response(serializer.validated_data, status=status.HTTP_200_OK)
-
-
-class UserListView(generics.ListAPIView):
-    queryset = CustomUser.objects.all().order_by('id')
-
-    serializer_class = UserSerializer
-
-    permission_classes = [IsAuthenticated]
-
-class GenerateUsersView(APIView):
-    permission_classes = [AllowAny]
-
-    def get(self, request, *args, **kwargs):
-        try:
-            count = int(request.query_params.get('n', 5))
-        except ValueError:
-            count = 5
-
-        users = generate_random_users(count)
-        created_usernames = [user.username for user in users]
-        return Response({
-            "message": f"Успішно створено {len(users)} користувачів.",
-            "users": created_usernames
-        })

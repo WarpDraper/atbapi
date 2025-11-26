@@ -3,12 +3,14 @@ const RECAPTCHA_KEY = import.meta.env.VITE_RECAPTCHA_KEY;
 const GOOGLE_AUTH_KEY = import.meta.env.VITE_GOOGLE_AUTH;
 
 const IMAGE_BASE_URL = API_BASE_URL + '/' + 'images/';
+const VIDEO_BASE_URL = API_BASE_URL + '/' + 'videos/';
 
 const APP_ENV = {
     API_BASE_URL,
     RECAPTCHA_KEY,
     GOOGLE_AUTH_KEY,
-    IMAGE_BASE_URL
+    IMAGE_BASE_URL,
+    VIDEO_BASE_URL
 }
 
 export { APP_ENV };

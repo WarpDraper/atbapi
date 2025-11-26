@@ -31,3 +31,4 @@ class TopicChildSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
         fields = ['id', 'name', 'url_slug', 'priority']
+ 

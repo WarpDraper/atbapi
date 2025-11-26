@@ -12,13 +12,14 @@ class Post(models.Model):
     video_url = models.URLField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    # Зв’язки
+       # Зв’язки
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='posts')
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='posts')
 
     def __str__(self):
         return self.title
 
-    # def has_media(self):
-    #     return self.image or self.video or self.video_url
+    def has_media(self):
+        return self.image or self.video or self.video_url
 
+ 
